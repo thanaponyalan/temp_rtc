@@ -4,8 +4,12 @@ html(lang="en")
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
     body
-        div(ng-app='Hello')
-            | {{'World'|sayHello}}
+        div(ng-app='Hello' ng-controller='NameController')
+            div
+                label(for="yourName") Your name is
+                input(type="text", name="yourName", ng-model='yourName')
+            div
+                | {{yourName|sayHello}}
         each data in tempData
             ul 
                 li #{data.year}
@@ -13,5 +17,5 @@ html(lang="en")
                 li #{data.day}
                 li #{data.temperature}
                 li #{data.humidity}
-	    script(type='text/javascript', src='/lib/angular/angular.min.js')
+        script(type='text/javascript', src='/lib/angular/angular.min.js')
         script(type='text/javascript', src='/application.js')
