@@ -2,7 +2,7 @@ const { temp_rtc } = require('../models/temp_rtc.model');
 
 var render=(req,res)=>{
     temp_rtc.find({},(err,data)=>{
-	if(!err)res.json(data);
+	    if(!err)res.render('index',{tempData: data});
     });
 }
 
