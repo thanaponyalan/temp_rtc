@@ -4,4 +4,10 @@ html(lang="en")
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
     body
-        div #{tempData}
+        each data in tempData
+            ul 
+                li #{data.year}
+                li #{data.month}
+                li #{data.day}
+                li #{data.temperature}
+                li #{data.humidity}
