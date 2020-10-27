@@ -32,6 +32,9 @@ angular.module("app", ["chart.js","datatables"])
                 temperature.push(value.temperature.toFixed(2));
                 humidity.push(value.humidity.toFixed(2));
             });
+            labels.reverse();
+            temperature.reverse();
+            humidity.reverse();
             $scope.labels=labels;
             $scope.series=['Temperature','Humidity'];
             $scope.data=[temperature,humidity];
