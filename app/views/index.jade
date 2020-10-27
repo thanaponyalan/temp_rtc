@@ -21,7 +21,7 @@ html(lang="en")
                         th #
                         th {{ detail.temperature }}
                         th {{ detail.humidity }}
-                        th {{ detail.dateTime | datetime }}
+                        th {{ detail.dateTime | formatAsDate }}
     script(src="/lib/jquery/dist/jquery.min.js")
     script(src="/lib/datatables.net/js/jquery.dataTables.min.js")
     script(src="/lib/chart.js/dist/Chart.min.js")
