@@ -34,7 +34,7 @@ var getData=(req,res)=>{
 	        let result=Object.entries(tmp).map(function(entry){
 		        return {date: entry[0], temperature: entry[1].totalTemperature/entry[1].count, humidity: entry[1].totalHumidity/entry[1].count};
 	        });
-            res.json({detail:detail, average: result});
+            res.json({detail:detail, average: result.slice(0,7)});
         }
     })
 }

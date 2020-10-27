@@ -4,21 +4,10 @@ html(lang="en")
         meta(charset='utf-8')
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
     body(ng-app='app')
-        div(ng-controller='NameController')
-            div
-                label(for="yourName") Your name is
-                input(type="text", name="yourName", ng-model='yourName')
-            div
-                | {{yourName|sayHello}}
         div(ng-controller='LineCtrl')
-            canvas(class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick") 
-        each data in tempData
-            ul 
-                li #{data.year}
-                li #{data.month}
-                li #{data.day}
-                li #{data.temperature}
-                li #{data.humidity}
+            canvas(class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick")
+        div(ng-controller='DTCtrl')
+            table
     script(type='text/javascript', src='/lib/angular/angular.min.js')
     script(src="/lib/chart.js/dist/Chart.min.js")
     script(src="/lib/angular-chart.js/angular-chart.js")

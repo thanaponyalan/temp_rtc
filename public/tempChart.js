@@ -18,7 +18,6 @@ angular.module("app", ["chart.js"])
         [65, 59, 80, 81, 56, 55, 40],
         [28, 48, 40, 19, 86, 27, 90]
     ];*/
-    refresh();
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
@@ -37,13 +36,9 @@ angular.module("app", ["chart.js"])
             $scope.data=[temperature,humidity];
         });
     };
+    refresh();
     $interval(refresh,300000)
 }])
-.controller('NameController', ['$scope', function ($scope) {
+.controller('DTCtrl', ['$scope', function ($scope) {
     $scope.yourName = 'No Name';
-}])
-.filter('sayHello', function () {
-    return function (name) {
-        return 'Hello, ' + name;
-    }
-});
+}]);
