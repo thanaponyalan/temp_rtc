@@ -67,7 +67,7 @@ function DatatablesCtrl($resource, DTOptionsBuilder, DTColumnDefBuilder){
         DTColumnDefBuilder.newColumnDef(3)
     ];
     vm.dtInstance={};
-    $('/data').query().$promise.then((response)=>{
+    $resource('/data').query().$promise.then((response)=>{
         vm.details=response.data;
     })
 }
