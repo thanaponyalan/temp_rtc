@@ -43,12 +43,12 @@ angular.module("app", ["chart.js"])
 .controller('DTCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
     var refresh=()=>{
         $scope.details=[];
-        $http.get('http://raspberrypi.local:3009/data').then((data, status, headers, config)=>{
-            $scope.details=data.detail;
+        $http.get('http://raspberrypi.local:3009/data').then((response)=>{
+            $scope.details=response.data.detail;
         });
     };
     refresh();
-    $interval(refresh,300000);
+    $interval(refresh,1000);
 }])
 .filter('formatAsDate',function(){
     return function(dateTime){
