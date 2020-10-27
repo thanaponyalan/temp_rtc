@@ -23,11 +23,11 @@ angular.module("app", ["chart.js"])
     };
 
     var refresh=()=>{
-        $http.get('http://raspberrypi.local:3009/data').success((data, status, headers, config)=>{
+        $http.get('http://raspberrypi.local:3009/data').then((response)=>{
             let labels=new Array();
             let temperature=new Array();
             let humidity=new Array();
-            angular.forEach(data.average.reverse(),function(value, key){
+            angular.forEach(response.data.average,function(value, key){
                 labels.push(value.date);
                 temperature.push(value.temperature.toFixed(2));
                 humidity.push(value.humidity.toFixed(2));
@@ -38,12 +38,12 @@ angular.module("app", ["chart.js"])
         });
     };
     refresh();
-    $interval(refresh,300000)
+    $interval(refresh,1000)
 }])
-.controller('DTCtrl', ['$scope','$interval', function ($scope, $interval) {
+.controller('DTCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
     var refresh=()=>{
         $scope.details=[];
-        $http.get('http://raspberrypi.local:3009/data').success((data, status, headers, config)=>{
+        $http.get('http://raspberrypi.local:3009/data').then((data, status, headers, config)=>{
             $scope.details=data.detail;
         });
     };
