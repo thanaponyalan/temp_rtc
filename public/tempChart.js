@@ -1,4 +1,4 @@
-angular.module("app", ["chart.js"])
+angular.module("app", ["chart.js","datatables"])
 // Optional configuration
 .config(['ChartJsProvider', function (ChartJsProvider) {
     // Configure all charts
@@ -42,7 +42,6 @@ angular.module("app", ["chart.js"])
 }])
 .controller('DTCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
     var refresh=()=>{
-        $scope.details=[];
         $http.get('http://raspberrypi.local:3009/data').then((response)=>{
             $scope.details=response.data.detail;
         });
