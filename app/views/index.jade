@@ -18,7 +18,7 @@ html(lang="en")
                         th Datetime
                 tbody
                     tr(ng-repeat="detail in details")
-                        th #
+                        th {{ $index+1 }}
                         th {{ detail.temperature }}
                         th {{ detail.humidity }}
                         th {{ detail.dateTime | formatAsDate }}

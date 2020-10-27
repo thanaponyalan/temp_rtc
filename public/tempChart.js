@@ -41,13 +41,13 @@ angular.module("app", ["chart.js","datatables"])
     $interval(refresh,300000)
 }])
 .controller('DatatablesCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
-    $http.get('http://raspberrypi.local:3009/data').then((response)=>{
-        $scope.details=response.data.detail;
-    });
-    // var refresh=()=>{
-    // };
-    // refresh();
-    // $interval(refresh,300000);
+    var refresh=()=>{
+        $http.get('http://raspberrypi.local:3009/data').then((response)=>{
+            $scope.details=response.data.detail;
+        });
+    };
+    refresh();
+    $interval(refresh,300000);
 }])
 .filter('formatAsDate',function(){
     return function(dateTime){
