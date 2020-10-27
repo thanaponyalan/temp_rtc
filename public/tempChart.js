@@ -55,7 +55,7 @@ angular.module("app", ["chart.js","datatables"])
 //.controller('DatatablesCtrl',DatatablesCtrl)
 .filter('formatAsDate',function(){
     return function(dateTime){
-        return moment(dateTime).utc().format('YYYY-MM-dd HH:mm');
+        return moment(dateTime).utc().format('YYYY-MM-DD HH:mm');
     }
 });
 
