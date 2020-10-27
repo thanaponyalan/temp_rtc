@@ -40,23 +40,23 @@ angular.module("app", ["chart.js","datatables","ngResource"])
     refresh();
     $interval(refresh,300000)
 }])
-// .controller('DatatablesCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
-//     var refresh=()=>{
-//         $http.get('http://raspberrypi.local:3009/data').then((response)=>{
-//             $scope.details=response.data.detail;
-//         });
-//     };
-//     refresh();
-//     $interval(refresh,300000);
-// }])
-.controller('DatatablesCtrl',DatatablesCtrl)
+.controller('DatatablesCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
+    var refresh=()=>{
+        $http.get('http://raspberrypi.local:3009/data').then((response)=>{
+            $scope.details=response.data.detail;
+        });
+    };
+    refresh();
+    $interval(refresh,300000);
+}])
+//.controller('DatatablesCtrl',DatatablesCtrl)
 .filter('formatAsDate',function(){
     return function(dateTime){
         return moment(dateTime).format('MMMM Do YYYY, h:m a');
     }
 });
 
-function DatatablesCtrl($resource, DTOptionsBuilder, DTColumnDefBuilder){
+/*function DatatablesCtrl($resource, DTOptionsBuilder, DTColumnDefBuilder){
     var vm=this;
     vm.details=[];
     vm.dtOptions=DTOptionsBuilder.newOptions();
@@ -70,4 +70,4 @@ function DatatablesCtrl($resource, DTOptionsBuilder, DTColumnDefBuilder){
     $resource('/data').query().$promise.then((response)=>{
         vm.details=response.data;
     })
-}
+}*/
