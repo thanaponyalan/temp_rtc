@@ -40,6 +40,18 @@ angular.module("app", ["chart.js"])
     refresh();
     $interval(refresh,300000)
 }])
-.controller('DTCtrl', ['$scope', function ($scope) {
-    $scope.yourName = 'No Name';
-}]);
+.controller('DTCtrl', ['$scope','$interval', function ($scope, $interval) {
+    var refresh=()=>{
+        $scope.details=[];
+        $http.get('http://raspberrypi.local:3009/data').success((data, status, headers, config)=>{
+            $scope.details=data.detail;
+        });
+    };
+    refresh();
+    $interval(refresh,300000);
+}])
+.filter('formatAsDate',function(){
+    return function(dateTime){
+        return moment(dateTime).format('MMMM Do YYYY, h:m a');
+    }
+});
