@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 angular.module("app", ["chart.js","datatables"])
 // Optional configuration
 .config(['ChartJsProvider', function (ChartJsProvider) {
@@ -40,17 +42,34 @@ angular.module("app", ["chart.js","datatables"])
     refresh();
     $interval(refresh,300000)
 }])
-.controller('DatatablesCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
-    var refresh=()=>{
-        $http.get('http://raspberrypi.local:3009/data').then((response)=>{
-            $scope.details=response.data.detail;
-        });
-    };
-    refresh();
-    $interval(refresh,300000);
-}])
+// .controller('DatatablesCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
+//     var refresh=()=>{
+//         $http.get('http://raspberrypi.local:3009/data').then((response)=>{
+//             $scope.details=response.data.detail;
+//         });
+//     };
+//     refresh();
+//     $interval(refresh,300000);
+// }])
+.controller('DatatablesCtrl',DatatablesCtrl)
 .filter('formatAsDate',function(){
     return function(dateTime){
         return moment(dateTime).format('MMMM Do YYYY, h:m a');
     }
 });
+
+function DatatablesCtrl($http, DTOptionsBuilder, DTColumnDefBuilder){
+    var vm=this;
+    vm.details=[];
+    vm.dtOptions=DTOptionsBuilder.newOptions();
+    vm.dtColumnDefs=[
+        DTColumnDefBuilder.newColumnDef(0),
+        DTColumnDefBuilder.newColumnDef(1),
+        DTColumnDefBuilder.newColumnDef(2),
+        DTColumnDefBuilder.newColumnDef(3)
+    ];
+    vm.dtInstance={};
+    $http.get('http://raspsberrypi.local:3009/data').then((response)=>{
+        vm.details=response.data;
+    })
+}
