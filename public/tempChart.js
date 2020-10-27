@@ -1,4 +1,4 @@
-angular.module("app", ["chart.js","datatables"])
+angular.module("app", ["chart.js","datatables","ngResource"])
 // Optional configuration
 .config(['ChartJsProvider', function (ChartJsProvider) {
     // Configure all charts
