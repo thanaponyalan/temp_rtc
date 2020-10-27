@@ -33,6 +33,7 @@ angular.module("app", ["chart.js"])
                 humidity.push(value.humidity.toFixed(2));
             });
             $scope.labels=labels;
+            $scope.series=['Temperature','Humidity'];
             $scope.data=[temperature,humidity];
         });
     };
