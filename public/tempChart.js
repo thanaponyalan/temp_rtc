@@ -23,18 +23,25 @@ angular.module("app", ["chart.js"])
     };
 
     $http.get('http://raspberrypi.local:3009/data').success((data, status, headers, config)=>{
-        angular.forEach(data,function(value, key){
-            console.log(value);
+        let labels=new Array();
+        let temperature=new Array();
+        let humidity=new Array();
+        angular.forEach(data.average,function(value, key){
+            labels.push(value.date);
+            temperature.push(value.temperature);
+            humidity.push(value.humidity);
         });
+        $scope.labels=labels;
+        $scope.data=[temperature,humidity];
     });
     
     // Simulate async data update
-    $timeout(function () {
-        $scope.data = [
-            [28, 48, 40, 19, 86, 27, 90],
-            [65, 59, 80, 81, 56, 55, 40]
-        ];
-    }, 3000);
+    // $timeout(function () {
+    //     $scope.data = [
+    //         [28, 48, 40, 19, 86, 27, 90],
+    //         [65, 59, 80, 81, 56, 55, 40]
+    //     ];
+    // }, 3000);
 }])
 .controller('NameController', ['$scope', function ($scope) {
     $scope.yourName = 'No Name';
