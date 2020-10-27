@@ -56,7 +56,7 @@ angular.module("app", ["chart.js","datatables"])
     }
 });
 
-function DatatablesCtrl($http, DTOptionsBuilder, DTColumnDefBuilder){
+function DatatablesCtrl($resource, DTOptionsBuilder, DTColumnDefBuilder){
     var vm=this;
     vm.details=[];
     vm.dtOptions=DTOptionsBuilder.newOptions();
@@ -67,7 +67,7 @@ function DatatablesCtrl($http, DTOptionsBuilder, DTColumnDefBuilder){
         DTColumnDefBuilder.newColumnDef(3)
     ];
     vm.dtInstance={};
-    $http.get('http://raspsberrypi.local:3009/data').then((response)=>{
+    $('/data').query().$promise.then((response)=>{
         vm.details=response.data;
     })
 }
