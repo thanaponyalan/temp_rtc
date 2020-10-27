@@ -40,7 +40,14 @@ angular.module("app", ["chart.js","datatables"])
     refresh();
     $interval(refresh,300000)
 }])
-.controller('DTCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
+.controller('DTCtrl', ['$q','$scope','$interval','$http', function ($q, $scope, $interval, $http) {
+    var vm=this;
+    vm.dtOptions=DTOptionBuilder.newOptions().withOptions('autoWidth',fnThatReturnsAPromise);
+    function fnThatReturnsAPromise(){
+        var defer=$q.defer();
+        defer.resolve(false);
+        return defer.promise();
+    }
     var refresh=()=>{
         $http.get('http://raspberrypi.local:3009/data').then((response)=>{
             $scope.details=response.data.detail;
