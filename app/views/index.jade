@@ -7,9 +7,9 @@ html(lang="en")
     body(ng-app='app')
         div(ng-controller='LineCtrl')
             canvas(class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick")
-        div(ng-controller='DTCtrl')
+        div(ng-controller='DatatablesCtrl as showCase')
             p {{ details }}
-            table(datatable="ng" dt-options="vm.dtOptions" class="table table-striped table-bordered")
+            table(datatable="" dt-options="showCase.dtOptions" class="table table-striped table-bordered")
                 thead
                     tr
                         th #
@@ -21,7 +21,7 @@ html(lang="en")
                         th {{ detail }}
                         th {{ detail.temperature }}
                         th {{ detail.humidity }}
-                        th {{ detail.datetime | datetime }}
+                        th {{ detail.dateTime | datetime }}
     script(src="/lib/jquery/dist/jquery.min.js")
     script(src="/lib/datatables.net/js/jquery.dataTables.min.js")
     script(src="/lib/chart.js/dist/Chart.min.js")
