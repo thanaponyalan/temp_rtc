@@ -22,20 +22,25 @@ angular.module("app", ["chart.js"])
         console.log(points, evt);
     };
 
-    refresh=$interval(()=>{
-        $http.get('http://raspberrypi.local:3009/data').success((data, status, headers, config)=>{
-            let labels=new Array();
-            let temperature=new Array();
-            let humidity=new Array();
-            angular.forEach(data.average.reverse(),function(value, key){
-                labels.push(value.date);
-                temperature.push(value.temperature.toFixed(2));
-                humidity.push(value.humidity.toFixed(2));
+    var refresh;
+    $scope.sRefresh=()=>{
+        if(angular.isDefined(refresh))return;
+        refresh=$interval(()=>{
+            $http.get('http://raspberrypi.local:3009/data').success((data, status, headers, config)=>{
+                let labels=new Array();
+                let temperature=new Array();
+                let humidity=new Array();
+                angular.forEach(data.average.reverse(),function(value, key){
+                    labels.push(value.date);
+                    temperature.push(value.temperature.toFixed(2));
+                    humidity.push(value.humidity.toFixed(2));
+                });
+                $scope.labels=labels;
+                $scope.data=[temperature,humidity];
             });
-            $scope.labels=labels;
-            $scope.data=[temperature,humidity];
-        });
-    },300000);
+        },300000);
+    }
+
 }])
 .controller('NameController', ['$scope', function ($scope) {
     $scope.yourName = 'No Name';
