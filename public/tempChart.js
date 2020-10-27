@@ -38,7 +38,7 @@ angular.module("app", ["chart.js","datatables"])
         });
     };
     refresh();
-    $interval(refresh,1000)
+    $interval(refresh,300000)
 }])
 .controller('DTCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
     var refresh=()=>{
@@ -47,7 +47,7 @@ angular.module("app", ["chart.js","datatables"])
         });
     };
     refresh();
-    $interval(refresh,1000);
+    $interval(refresh,300000);
 }])
 .filter('formatAsDate',function(){
     return function(dateTime){
