@@ -11,8 +11,7 @@ angular.module("app", ["chart.js"])
         showLines: true
     });
 }])
-.controller("LineCtrl", ['$scope', '$timeout', function ($scope, $timeout) {
-    
+.controller("LineCtrl", ['$scope', '$timeout', '$http', function ($scope, $timeout, $http) {
     $scope.labels = ["15/10", "16/10", "17/10", "18/10", "19/10", "20/10", "21/10"];
     $scope.series = ['Temperature', 'Humidity'];
     $scope.data = [
@@ -22,6 +21,12 @@ angular.module("app", ["chart.js"])
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
+
+    $http.get('http://raspberrypi.local:3009/data').success((data, status, headers, config)=>{
+        angular.forEach(data,function(value, key){
+            console.log(value);
+        });
+    });
     
     // Simulate async data update
     $timeout(function () {
