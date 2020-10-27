@@ -6,6 +6,7 @@ html(lang="en")
         link(rel="stylesheet", href="/lib/angular-datatables/dist/css/angular-datatables.min.css")
         link(rel="stylesheet", href="/lib/datatables.net-dt/css/jquery.dataTables.min.css")
     body(ng-app='app')
+        h1(style='text-align: center; color: blue;') Temperature and Humidity Monitoring.
         div(ng-controller='LineCtrl')
             canvas(class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-click="onClick")
         div(ng-controller='DatatablesCtrl')
