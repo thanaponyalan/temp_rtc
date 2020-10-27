@@ -40,7 +40,7 @@ angular.module("app", ["chart.js","datatables"])
     refresh();
     $interval(refresh,300000)
 }])
-.controller('DatatablesCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
+.controller('DatatablesCtrl', ['$scope','$interval','$http','formatAsDate', function ($scope, $interval, $http, formatAsDate) {
     $http.get('http://raspberrypi.local:3009/data').then((response)=>{
         $scope.details=response.data.detail;
     });
