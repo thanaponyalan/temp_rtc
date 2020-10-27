@@ -10,7 +10,7 @@ angular.module("app", ["chart.js"])
     ChartJsProvider.setOptions('line', {
         showLines: true
     });
-        }])
+}])
 .controller("LineCtrl", ['$scope', '$timeout', function ($scope, $timeout) {
     
     $scope.labels = ["15/10", "16/10", "17/10", "18/10", "19/10", "20/10", "21/10"];
@@ -30,4 +30,12 @@ angular.module("app", ["chart.js"])
             [65, 59, 80, 81, 56, 55, 40]
         ];
     }, 3000);
-}]);
+}])
+.controller('NameController', ['$scope', function ($scope) {
+    $scope.yourName = 'No Name';
+}])
+.filter('sayHello', function () {
+    return function (name) {
+        return 'Hello, ' + name;
+    }
+});

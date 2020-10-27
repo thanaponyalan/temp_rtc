@@ -11,9 +11,23 @@ var addData=(req,res)=>{
     res.json(r)
 }
 
+var getData=(req,res)=>{
+    let detail=new Array();
+    temp_rtc.find({},(err,data)=>{
+        if(!err){
+            data.forEach((item,index)=>{
+                let dt=new Date(item.year, (item.month-1), item.day, item.hour, item.minute);
+                detail.push(dt, item.temperature, item.humidity);
+            });
+            res.json(detail);
+        }
+    })
+}
+
 module.exports={
     render,
-    addData
+    addData,
+    getData
 }
 
 
