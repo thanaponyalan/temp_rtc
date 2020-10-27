@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 angular.module("app", ["chart.js","datatables"])
 // Optional configuration
 .config(['ChartJsProvider', function (ChartJsProvider) {
