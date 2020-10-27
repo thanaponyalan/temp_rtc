@@ -35,7 +35,7 @@ angular.module("app", ["chart.js"])
             $scope.labels=labels;
             $scope.data=[temperature,humidity];
         });
-    },1000);
+    },300000);
 }])
 .controller('NameController', ['$scope', function ($scope) {
     $scope.yourName = 'No Name';

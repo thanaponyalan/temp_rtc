@@ -25,8 +25,8 @@ var getData=(req,res)=>{
                 return b.dateTime-a.dateTime;
             });
             detail.forEach((item,index)=>{
-                if(isNaN(item.dateTime.getDate())||isNaN(item.dateTime.getMonth())||isNaN(item.dateTime.getFullYear())||!item.temperature||!item.humidity)return;
-		        let obj=tmp[item.dateTime.getDate()+'/'+(item.dateTime.getMonth()+1)+'/'+item.dateTime.getFullYear()]=tmp[item.dateTime.getDate()+'/'+(item.dateTime.getMonth()+1)+'/'+item.dateTime.getFullYear()]||{count:0, totalTemperature:0, totalHumidity:0};
+                if(isNaN(item.dateTime.getUTCDate())||isNaN(item.dateTime.getUTCMonth())||isNaN(item.dateTime.getUTCFullYear())||!item.temperature||!item.humidity)return;
+		        let obj=tmp[item.dateTime.getUTCDate()+'/'+(item.dateTime.getUTCMonth()+1)+'/'+item.dateTime.getUTCFullYear()]=tmp[item.dateTime.getUTCDate()+'/'+(item.dateTime.getUTCMonth()+1)+'/'+item.dateTime.getUTCFullYear()]||{count:0, totalTemperature:0, totalHumidity:0};
 		        obj.count++;
 		        obj.totalTemperature+=item.temperature;
 		        obj.totalHumidity+=item.humidity;
