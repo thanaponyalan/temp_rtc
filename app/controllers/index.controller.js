@@ -17,9 +17,9 @@ var getData=(req,res)=>{
             let detail=new Array();
             let tmp={};
             data.forEach((item,index)=>{
-		        if(!item.temperature||!item.humidity)return;
+		        if(!item.temperature||!item.humidity||item.humidity>100)return;
                 let dt=new Date(Date.UTC(item.year, (item.month-1), item.day, item.hour, item.minute));
-                detail.push({'dateTime':dt, 'temperature':item.temperature, 'humidity':item.humidity});
+                detail.push({'dateTime':dt, 'temperature':item.temperature, 'humidity':(item.humidity/10)});
             });
             detail.sort((a,b)=>{
                 return b.dateTime-a.dateTime;
