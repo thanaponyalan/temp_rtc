@@ -3,7 +3,7 @@ angular.module("app", ["chart.js","datatables"])
 .config(['ChartJsProvider', function (ChartJsProvider) {
     // Configure all charts
     ChartJsProvider.setOptions({
-        chartColors: ['#FF5252', '#FF8A80'],
+        chartColors: ['#FF5252', '#4682B4'],
         responsive: true
     });
     // Configure all line charts
@@ -37,7 +37,7 @@ angular.module("app", ["chart.js","datatables"])
             temperature.reverse();
             humidity.reverse();
             $scope.labels=labels;
-            $scope.series=['Temperature','Humidity'];
+            $scope.series=['Temperature (*C)','Humidity (1:5%rh)'];
             $scope.data=[temperature,humidity];
         });
     };
