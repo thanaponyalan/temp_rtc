@@ -8,7 +8,8 @@ angular.module("app", ["chart.js","datatables"])
     });
     // Configure all line charts
     ChartJsProvider.setOptions('line', {
-        showLines: true
+        showLines: true,
+        fill: false
     });
 }])
 .controller("LineCtrl", ['$scope', '$interval', '$http', function ($scope, $interval, $http) {
