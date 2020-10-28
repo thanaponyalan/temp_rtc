@@ -22,7 +22,14 @@ angular.module("app", ["chart.js","datatables"])
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
-    $scope.options={legend:{display: true}}
+    $scope.options={
+        legend:{
+            display: true
+        },
+        line:{
+            borderColor:['#FF5252', '#4682B4'],
+        }
+    }
 
     var refresh=()=>{
         $http.get('http://raspberrypi.local:3009/data').then((response)=>{
