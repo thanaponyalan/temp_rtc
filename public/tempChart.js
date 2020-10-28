@@ -21,6 +21,7 @@ angular.module("app", ["chart.js","datatables"])
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
+    $scope.options={legend:{display: true}}
 
     var refresh=()=>{
         $http.get('http://raspberrypi.local:3009/data').then((response)=>{
@@ -41,7 +42,7 @@ angular.module("app", ["chart.js","datatables"])
         });
     };
     refresh();
-    $interval(refresh,300000)
+    $interval(refresh,60000)
 }])
 .controller('DatatablesCtrl', ['$scope','$interval','$http', function ($scope, $interval, $http) {
     var refresh=()=>{
@@ -50,7 +51,7 @@ angular.module("app", ["chart.js","datatables"])
         });
     };
     refresh();
-    $interval(refresh,300000);
+    $interval(refresh,60000);
 }])
 //.controller('DatatablesCtrl',DatatablesCtrl)
 .filter('formatAsDate',function(){
