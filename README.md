@@ -207,6 +207,8 @@ const temp_rtc=mongoose.model('temp_rtc',tempSensorRTCSchema);
 ทำการติดตั้งด้วยคำสั่ง
 ```
     bower install angular-datatables@0.6.2 --save
+    bower install datatables.net --save
+    bower install datatables.net-dt --save
 ```
 
 - อัพเดตข้อมูลตลอดจนจัดการข้อมูลที่แสดงผลด้วย angular.js และ moment
