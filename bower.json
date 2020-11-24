@@ -18,6 +18,7 @@
     "angular": "~1.4.4",
     "chart.js": "^2.9.4",
     "angular-chart.js": "^1.1.1",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "angular-datatables": "0.6.2"
   }
 }
